@@ -59,6 +59,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         imagePickerView.image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         self.dismiss(animated: true, completion: nil)
+        repositionTexts()
+
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -70,6 +72,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         imagePicker.sourceType = .camera
         present(imagePicker, animated: true, completion: nil)
 
+    }
+    
+    func repositionTexts() {
+        print("reposition texts")
+        print(imagePickerView.frame.origin)
+        print(imagePickerView.bounds)
+        topText.frame = CGRectMake(imagePickerView.bounds.origin.x, imagePickerView.frame.origin.y - topText.frame.size.height, imagePickerView.frame.size.width, topText.frame.size.height);
+        
     }
 }
 

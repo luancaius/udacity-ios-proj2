@@ -17,29 +17,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bZx-oF-ZLa">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bZx-oF-ZLa">
                                 <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Share" id="2zh-vZ-Xl6" userLabel="Share"/>
+                                </items>
                             </navigationBar>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ia9-lf-Zze">
-                                <rect key="frame" x="0.0" y="59" width="393" height="652"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ia9-lf-Zze">
+                                <rect key="frame" x="0.0" y="59" width="393" height="746.66666666666663"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="n2b-1E-De0" userLabel="TopText">
-                                <rect key="frame" x="0.0" y="59.000000000000007" width="393" height="118.66666666666669"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="n2b-1E-De0" userLabel="TopText">
+                                <rect key="frame" x="0.0" y="109" width="393" height="18.666666666666671"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="oxx-sV-3tp" userLabel="BottomText">
+                            <textField opaque="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="248" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="oxx-sV-3tp" userLabel="BottomText">
                                 <rect key="frame" x="0.0" y="141" width="393" height="570"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mUn-yh-UpY">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mUn-yh-UpY">
                                 <rect key="frame" x="0.0" y="761.66666666666663" width="393" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Bhj-uf-K2h"/>
                                     <barButtonItem image="camera.fill" catalog="system" id="gc6-x8-ibc" userLabel="Camera">
@@ -59,6 +57,24 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="oxx-sV-3tp" firstAttribute="bottom" secondItem="Ia9-lf-Zze" secondAttribute="bottom" constant="-50" id="01p-rx-yiR"/>
+                            <constraint firstItem="bZx-oF-ZLa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="17Y-Bv-EU0"/>
+                            <constraint firstItem="n2b-1E-De0" firstAttribute="centerX" secondItem="Ia9-lf-Zze" secondAttribute="centerX" id="3kn-Qd-47N"/>
+                            <constraint firstItem="n2b-1E-De0" firstAttribute="width" secondItem="Ia9-lf-Zze" secondAttribute="width" id="8fd-oP-cah"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mUn-yh-UpY" secondAttribute="bottom" constant="12.333333333333371" id="HaD-W1-cSd"/>
+                            <constraint firstItem="oxx-sV-3tp" firstAttribute="centerX" secondItem="Ia9-lf-Zze" secondAttribute="centerX" id="Jib-Il-5Ch"/>
+                            <constraint firstItem="bZx-oF-ZLa" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="LpP-yB-h3t"/>
+                            <constraint firstItem="Ia9-lf-Zze" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="afb-TQ-Dni"/>
+                            <constraint firstItem="n2b-1E-De0" firstAttribute="top" secondItem="Ia9-lf-Zze" secondAttribute="top" constant="50" id="b7c-uc-sVt"/>
+                            <constraint firstItem="oxx-sV-3tp" firstAttribute="width" secondItem="Ia9-lf-Zze" secondAttribute="width" id="ddL-qz-Fkp"/>
+                            <constraint firstItem="Ia9-lf-Zze" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" id="dyx-Zc-qSx"/>
+                            <constraint firstItem="bZx-oF-ZLa" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" id="gOK-JH-hhZ"/>
+                            <constraint firstItem="Ia9-lf-Zze" firstAttribute="top" secondItem="bZx-oF-ZLa" secondAttribute="top" id="hM6-PZ-zzo"/>
+                            <constraint firstItem="mUn-yh-UpY" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="lMZ-lr-cXo"/>
+                            <constraint firstItem="Ia9-lf-Zze" firstAttribute="bottom" secondItem="mUn-yh-UpY" secondAttribute="bottom" id="tqf-HU-08M"/>
+                            <constraint firstItem="mUn-yh-UpY" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" id="v06-Mm-YKY"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="bottomText" destination="oxx-sV-3tp" id="TDh-a4-bRt"/>
