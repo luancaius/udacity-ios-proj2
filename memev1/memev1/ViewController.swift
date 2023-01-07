@@ -15,9 +15,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var topText: UITextField!
     
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        shareButton.isEnabled = false
         let memeTextAttributes: [NSAttributedString.Key: Any] = [
             NSAttributedString.Key.strokeColor: UIColor.black,
             NSAttributedString.Key.foregroundColor: UIColor.white,
@@ -53,6 +54,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
+
+    
     func unsubscribeFromKeyboardNotifications() {
 
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -94,13 +97,68 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             present(imagePicker, animated: true, completion: nil)
+        shareButton.isEnabled = true
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         imagePickerView.image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         self.dismiss(animated: true, completion: nil)
         repositionTexts()
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    @IBAction func takePicture(_ sender: Any) {
+        let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+        imagePicker.sourceType = .camera
+        present(imagePicker, animated: true, completion: nil)
+        shareButton.isEnabled = true
+    }
+    
+<<<<<<< HEAD
+    @IBAction func saveMeme(_ sender: Any) {
+        var memedImage = generateMemedImage()
+        let meme = Meme(topText: topText.text!, bottomText: bottomText.text!, originalImage: imagePickerView.image!, memedImage: memedImage)
+        print("image saved")
+        
+    }
+    
+    func generateMemedImage() -> UIImage {
 
+        // TODO: Hide toolbar and navbar
+        
+        
+        // Render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        // TODO: Show toolbar and navbar
+
+        return memedImage
+    }
+    
+    func repositionTexts() {
+        print("reposition texts")
+        print(imagePickerView.frame.origin)
+        print(imagePickerView.bounds)
+        topText.frame = CGRectMake(imagePickerView.bounds.origin.x, imagePickerView.frame.origin.y - topText.frame.size.height, imagePickerView.frame.size.width, topText.frame.size.height);
+        
+    }
+}
+
+struct Meme {
+var topText: String
+var bottomText: String
+var originalImage: UIImage
+var memedImage: UIImage
+=======
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        imagePickerView.image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        self.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -113,13 +171,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         present(imagePicker, animated: true, completion: nil)
 
     }
-    
-    func repositionTexts() {
-        print("reposition texts")
-        print(imagePickerView.frame.origin)
-        print(imagePickerView.bounds)
-        topText.frame = CGRectMake(imagePickerView.bounds.origin.x, imagePickerView.frame.origin.y - topText.frame.size.height, imagePickerView.frame.size.width, topText.frame.size.height);
-        
-    }
+>>>>>>> main
 }
 

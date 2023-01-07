@@ -4,6 +4,11 @@
 <dict>
     <key>NSCameraUsageDescription</key>
     <string>App needs access to the camera to take pictures.</string>
+<<<<<<< HEAD
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>Need permission to save the memes</string>
+=======
+>>>>>>> main
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
