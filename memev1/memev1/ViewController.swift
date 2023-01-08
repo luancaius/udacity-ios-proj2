@@ -8,8 +8,8 @@
 import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate,
-                        UINavigationControllerDelegate, UITextFieldDelegate {
-
+                      UINavigationControllerDelegate, UITextFieldDelegate {
+    
     @IBOutlet weak var bottomText: UITextField!
     
     @IBOutlet weak var imagePickerView: UIImageView!
@@ -37,43 +37,44 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     override func viewWillAppear(_ animated: Bool) {
-
+        
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
-
+        
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
     }
     
+    @IBAction func reset(_ sender: Any) {
+        topText.text = ""
+        bottomText.text = ""
+        self.imagePickerView.image = nil
+    }
     func subscribeToKeyboardNotifications() {
-
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-
-
     
     func unsubscribeFromKeyboardNotifications() {
-
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-
     }
+    
     @objc func keyboardWillShow(_ notification:Notification) {
         if bottomText!.isEditing {
             view.frame.origin.y -= getKeyboardHeight(notification)
         }
     }
-
+    
     @objc func keyboardWillHide(_ notification:Notification) {
         view.frame.origin.y = 0
     }
     
     func getKeyboardHeight(_ notification:Notification) -> CGFloat {
-
+        
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue // of CGRect
         return keyboardSize.cgRectValue.height
@@ -92,11 +93,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         textField.resignFirstResponder()
         return true
     }
-
+    
     @IBAction func pickAnImage(_ sender: Any) {
         let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            present(imagePicker, animated: true, completion: nil)
+        imagePicker.delegate = self
+        present(imagePicker, animated: true, completion: nil)
         shareButton.isEnabled = true
     }
     
@@ -109,24 +110,36 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
     }
+    
     @IBAction func takePicture(_ sender: Any) {
         let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
+        imagePicker.delegate = self
         imagePicker.sourceType = .camera
         present(imagePicker, animated: true, completion: nil)
         shareButton.isEnabled = true
     }
     
-<<<<<<< HEAD
-    @IBAction func saveMeme(_ sender: Any) {
+    @IBAction func shareMeme(_ sender: Any) {
+        let memedImage = generateMemedImage()
+        let shareController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        
+        shareController.completionWithItemsHandler = { (activityType, completed, returnedItems, activityError) -> () in
+            if (completed) {
+                self.saveMeme(memedImage)
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+        present(shareController, animated: true, completion: nil)
+    }
+    
+    func saveMeme(_ memedImage: UIImage) {
+        
         var memedImage = generateMemedImage()
         let meme = Meme(topText: topText.text!, bottomText: bottomText.text!, originalImage: imagePickerView.image!, memedImage: memedImage)
-        print("image saved")
-        
     }
     
     func generateMemedImage() -> UIImage {
-
+        
         // TODO: Hide toolbar and navbar
         
         
@@ -135,9 +148,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-
+        
         // TODO: Show toolbar and navbar
-
+        
         return memedImage
     }
     
@@ -149,28 +162,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         
     }
 }
-
 struct Meme {
-var topText: String
-var bottomText: String
-var originalImage: UIImage
-var memedImage: UIImage
-=======
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        imagePickerView.image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-        self.dismiss(animated: true, completion: nil)
-    }
+    var topText: String
+    var bottomText: String
+    var originalImage: UIImage
+    var memedImage: UIImage
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    @IBAction func takePicture(_ sender: Any) {
-        let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-        imagePicker.sourceType = .camera
-        present(imagePicker, animated: true, completion: nil)
-
-    }
->>>>>>> main
 }
 
