@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Edit Meme View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="memev1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="EditMemeViewController" customModule="memev1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -37,14 +37,14 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ia9-lf-Zze">
                                 <rect key="frame" x="0.0" y="109" width="393" height="602"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="n2b-1E-De0" userLabel="TopText">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="n2b-1E-De0" userLabel="TopText">
                                 <rect key="frame" x="0.0" y="454" width="393" height="18.666666666666686"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="248" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="oxx-sV-3tp" userLabel="BottomText">
+                            <textField opaque="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="248" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="oxx-sV-3tp" userLabel="BottomText">
                                 <rect key="frame" x="0.0" y="141" width="393" height="570"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mUn-yh-UpY" userLabel="ToolbarBottom">
@@ -72,6 +72,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="n2b-1E-De0" firstAttribute="width" secondItem="Ia9-lf-Zze" secondAttribute="width" id="11W-1j-N40"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mUn-yh-UpY" secondAttribute="bottom" constant="12.333333333333371" id="7hU-cn-Aqe"/>
                             <constraint firstItem="TXK-jr-K2O" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" id="8p1-zz-Pzf"/>
                             <constraint firstItem="TXK-jr-K2O" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="9fI-5L-JEY"/>
@@ -79,6 +80,7 @@
                             <constraint firstItem="TXK-jr-K2O" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Ezd-Jb-7Es"/>
                             <constraint firstItem="n2b-1E-De0" firstAttribute="top" secondItem="Ia9-lf-Zze" secondAttribute="top" id="FYi-qb-vJv"/>
                             <constraint firstItem="n2b-1E-De0" firstAttribute="centerX" secondItem="Ia9-lf-Zze" secondAttribute="centerX" id="G6b-oB-1FF"/>
+                            <constraint firstItem="oxx-sV-3tp" firstAttribute="width" secondItem="Ia9-lf-Zze" secondAttribute="width" id="GI4-vh-jVU"/>
                             <constraint firstItem="Ia9-lf-Zze" firstAttribute="width" secondItem="TXK-jr-K2O" secondAttribute="width" id="Itv-71-QOu"/>
                             <constraint firstItem="oxx-sV-3tp" firstAttribute="bottom" secondItem="Ia9-lf-Zze" secondAttribute="bottom" id="bwc-su-t1K"/>
                             <constraint firstItem="mUn-yh-UpY" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="dQg-88-XD6"/>
@@ -92,6 +94,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="bottomText" destination="oxx-sV-3tp" id="TDh-a4-bRt"/>
+                        <outlet property="cameraButton" destination="gc6-x8-ibc" id="1P6-8n-7Vj"/>
                         <outlet property="imagePickerView" destination="Ia9-lf-Zze" id="wwM-GU-aO7"/>
                         <outlet property="shareButton" destination="z2j-XQ-Lx5" id="orB-FS-WX8"/>
                         <outlet property="topText" destination="n2b-1E-De0" id="P8D-Bd-cDo"/>
